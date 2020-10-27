@@ -18,18 +18,44 @@ def chartLineStyle():
 
 # 산점도 출력 함수
 def scatterChart(x_data, y_data):
-    pass
+    plt.scatter(x_data, y_data, c="steelblue", edgecolors="dodgerblue")
+    #plt.plot(x_data, y_data, "bo", markeredgecolor= "r")
+    plt.show()
 
 # 계단형 라인 차트 함수
 def multiLineChart():
-    pass
+    data1 = np.random.randn(50)
+    data2 = np.random.randn(50)
+
+    plt.plot(data1, color="r", label="step", drawstyle="steps")
+    plt.plot(data2, color="g", label="line")
 
 # 다양한 사이즈 산점도 출력 함수
 def multiSizeScatter():
-    pass
+    rng = np.random.RandomState(0)
+    x = rng.randn(100)
+    y = rng.randn(100)
+    colors = rng.rand(100)
+    sizes = rng.rand(100)*1000
+
+    plt.scatter(x, y, s = sizes, c = colors, alpha=0.5)
+    plt.colorbar()
+    plt.show()
+
+# 산점도 데이터 준비
+point_list = []
+for i in range(100):
+    x = np.random.normal(0, 1) # 표준정규분포
+    y = x * 0.1 + 0.2 + np.random.normal(0, 1)
+    point_list.append([x, y])
+
+x_data = [x[0] for x in point_list]
+y_data = [y[1] for y in point_list]
+print(x_data)
+print(y_data)
 
 if __name__ == "__main__":
-    chartLineStyle()
+    #chartLineStyle()
     #scatterChart(x_data, y_data)
     #multiLineChart()
-    #multiSizeScatter()
+    multiSizeScatter()
